@@ -1,15 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>All entries</title>
 </head>
+
 <body>
     <h1>All Entries Page</h1>
     <% for (let oneEntry of entries){ %>
-        <p>Title: <%= oneEntry.title %></p>
-        <p>Body: <%=oneEntry.entryBody %></p>
-     <% } %>
+        <p>Title: <%= oneEntry.title %>
+        </p>
+        <p>Body: <%=oneEntry.entryBody %>
+        </p>
+        <% if(sessionUser._id.toString() === oneEntry.owner._id.toString() ){ %>
+                <form action="/entries/<%= oneEntry._id %>/delete?_method=DELETE" method="post">
+                    <button>Delete Entry</button>
+                </form>
+
+                <form action="/entries/<%=oneEntry._id%>/edit" method="get">
+                    <button>Edit Entry</button>
+                </form>
+                <% }%>
+                    <% } %>
+
 </body>
+
 </html>

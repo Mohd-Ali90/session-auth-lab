@@ -27,8 +27,7 @@ if (req.body.isPublic === 'on') {
 
 router.get('/', async (req,res)=>{
     const foundEntry= await Entry.find({isPublic:true})
-    console.log(foundEntry)
-    res.render('entries/all-entries.ejs',{entries:foundEntry})
+    res.render('entries/all-entries.ejs',{entries:foundEntry, sessionUser: req.session.user})
 })
 
 router.get('/my-entries' ,isSignedIn, async (req,res)=>{
