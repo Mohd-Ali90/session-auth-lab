@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Entries</title>
+</head>
+<body>
+    <%- include('../partials/navbar') %>
+    <h1>View your entries</h1>
+    <% for (let oneEntry of entries){ %>
+        <p>Title: <%= oneEntry.title %></p>
+        <p>Body: <%=oneEntry.entryBody %></p>
+
+          <form action="/entries/<%= oneEntry._id %>/delete?_method=DELETE" method="post">
+            <button>Delete Entry</button>
+        </form>
+
+        <form action="/entries/<%=oneEntry._id%>/edit" method="get">
+            <button>Edit Entry</button>
+        </form>
+
+         
+     <% } %>
+
+    
+     
+
+      
+</body>
+</html>

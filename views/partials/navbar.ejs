@@ -1,0 +1,15 @@
+<nav>
+    
+    <a href="/">Homepage</a>
+    <% if (user){ %>
+    <a href="/auth/sign-out">Logout</a>
+    <a href="/entries/my-entries">My entries</a>
+    <a href="/entries/new">Make New Entry</a>
+
+    <% } else{ %>
+    <a href="/auth/sign-up">Sign up</a>
+    <a href="/auth/sign-in">Login</a>
+
+    <% } %>
+    
+</nav>
